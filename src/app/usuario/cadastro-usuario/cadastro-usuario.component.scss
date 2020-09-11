@@ -1,0 +1,30 @@
+.width-100 {
+    width: 100%;
+}
+
+
+.botao-sucesso {
+    &:hover{
+        background-color: #00b300;
+    }
+    
+    &:disabled{
+      background-color: #cccccc;
+      color: #808080;
+    }
+    
+    &:not(:disabled):not(.disabled):active:focus {
+      background-color: green;
+    }
+    
+    background-color: #00cd00;
+    color: white;
+}
+
+.erro-validacao {
+    margin-top: -20px;
+    text-align: left !important;
+    color: red;
+    font-size: small;
+}
+

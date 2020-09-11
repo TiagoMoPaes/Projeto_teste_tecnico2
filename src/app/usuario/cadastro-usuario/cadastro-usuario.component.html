@@ -1,0 +1,87 @@
+<div class="d-flex justify-content-center ">
+    <div class="card bg-light mb-3 text-center">
+        <div class="card-header text-white text-left" style="background-color: 	#800080;"><strong>CADASTRAR
+                USUÁRIO</strong></div>
+        <div class="card-body">
+            <h5 class="card-title"><strong>INFORMAÇÕES PESSOAIS</strong></h5>
+            <mat-divider></mat-divider>
+            <div class="card-text">
+
+                <form [formGroup]="formularioUsuario">
+                    <div class="row">
+                        <div class="col-12 col-md-auto">
+                            <mat-form-field class="width-100">
+                                <mat-label>Nome</mat-label>
+                                <input matInput formControlName="nome" required>
+                            </mat-form-field>
+                            <div *ngIf="formularioUsuario.controls['nome'].touched && formularioUsuario.controls['nome'].invalid"
+                                class="erro-validacao">
+                                Nome obrigatório
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-auto">
+                            <mat-form-field class="width-100">
+                                <mat-label>Sobrenome</mat-label>
+                                <input matInput formControlName="sobrenome" required>
+                            </mat-form-field>
+                            <div *ngIf="formularioUsuario.controls['sobrenome'].touched && formularioUsuario.controls['sobrenome'].invalid"
+                                class="erro-validacao">
+                                Sobrenome obrigatório
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-auto">
+                            <mat-form-field class="width-100">
+                                <mat-label>Data de Nascimento</mat-label>
+                                <input matInput formControlName="dataNascimento" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex align-items-baseline">
+                        <div class="col-12 col-md-auto">
+                            <mat-form-field class="width-100">
+                                <mat-label>Email</mat-label>
+                                <input matInput formControlName="email" required>
+                            </mat-form-field>
+                            <div *ngIf="formularioUsuario.controls['email'].touched && (formularioUsuario.controls['email'].pristine || formularioUsuario.controls['email'].value == '')"
+                                class="erro-validacao">
+                                Email obrigatório
+                            </div>
+                            <div *ngIf="formularioUsuario.controls['email'].dirty && formularioUsuario.controls['email'].invalid && formularioUsuario.controls['email'].value != ''"
+                                class="erro-validacao">
+                                Email inválido
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-auto">
+                            <mat-form-field class="width-100">
+                                <mat-label>Escolaridade</mat-label>
+                                <mat-select formControlName="escolaridade" required>
+                                    <mat-option *ngFor="let escolaridade of nivelEscolaridade"
+                                        [value]="escolaridade.value">
+                                        {{escolaridade.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <div *ngIf="formularioUsuario.controls['escolaridade'].touched && formularioUsuario.controls['escolaridade'].invalid"
+                                class="erro-validacao">
+                                Escolaridade obrigatório
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 ">
+                            <button mat-raised-button class="width-100 btn-primary botao-sucesso"
+                                [disabled]="formularioUsuario.invalid" (click)="cadastraUsuario()">CADASTRAR</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
